@@ -36,58 +36,65 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var nodemailer = require('nodemailer');
 function main() {
-    var _this = this;
-    // Contact list can be imported
-    var contacts = [
-        {
-            "name": "John Doe",
-            "email": "john_doe@gmail.com",
-            "attachments": [{ "filename": "helloworld.pdf", "path": "C:/Users/Yourself/Documents/helloworld.pdf" }]
-        }
-    ];
-    try {
-        var SENDER_CREDENTIALS_1 = {
-            user: "yourself@gmail.com",
-            password: "p4ssw0rd@abc"
-        };
-        var transport_1 = nodemailer.createTransport({
-            // Uses 'pool' attribute: The same connection is used to send up to 100 mails before being disposed.
-            pool: true,
-            // Sets the number of max connections per transport. Microsoft accepts up to 1 parallel connection for the same client.
-            maxConnections: 1,
-            // If true, a logger instance will log to console
-            logger: true,
-            // Outlook: smtp-mail.outlook.com, Gmail: gmail. For reference when using gmail as host, visit: https://nodemailer.com/usage/using-gmail/
-            host: "smtp-mail.outlook.com",
-            auth: {
-                user: SENDER_CREDENTIALS_1.user,
-                pass: SENDER_CREDENTIALS_1.password
-            },
-            tls: { rejectUnauthorized: false }
+    return __awaiter(this, void 0, void 0, function () {
+        var contacts, SENDER_CREDENTIALS, transport, _i, contacts_1, contact, mailConfig, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    contacts = [
+                        {
+                            "name": "John Doe",
+                            "email": "john_doe@gmail.com",
+                            "attachments": [{ "filename": "helloworld.pdf", "path": "C:/Users/Yourself/Documents/helloworld.pdf" }]
+                        }
+                    ];
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 6, , 7]);
+                    SENDER_CREDENTIALS = {
+                        user: "yourself@gmail.com",
+                        password: "p4ssw0rd@abc"
+                    };
+                    transport = nodemailer.createTransport({
+                        pool: true,
+                        maxConnections: 1,
+                        logger: true,
+                        // Outlook: smtp-mail.outlook.com, Gmail: gmail. For reference when using gmail as host, visit: https://nodemailer.com/usage/using-gmail/
+                        host: "gmail",
+                        auth: {
+                            user: SENDER_CREDENTIALS.user,
+                            pass: SENDER_CREDENTIALS.password
+                        },
+                        tls: { rejectUnauthorized: false }
+                    });
+                    _i = 0, contacts_1 = contacts;
+                    _a.label = 2;
+                case 2:
+                    if (!(_i < contacts_1.length)) return [3 /*break*/, 5];
+                    contact = contacts_1[_i];
+                    mailConfig = {
+                        from: SENDER_CREDENTIALS.user,
+                        to: contact.email,
+                        attachments: contact.attachments,
+                        subject: 'REPLACE THIS WITH YOUR DESIRED SUBJECT',
+                        text: 'REPLACE THIS WITH YOUR DESIRED EMAIL CONTENT',
+                        html: '<h1>REPLACE THIS WITH YOUR DESIRED EMAIL CONTENT</h1>'
+                    };
+                    return [4 /*yield*/, transport.sendMail(mailConfig)];
+                case 3:
+                    _a.sent();
+                    _a.label = 4;
+                case 4:
+                    _i++;
+                    return [3 /*break*/, 2];
+                case 5: return [3 /*break*/, 7];
+                case 6:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 7];
+                case 7: return [2 /*return*/];
+            }
         });
-        contacts.forEach(function (contact) { return __awaiter(_this, void 0, void 0, function () {
-            var mailConfig;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        mailConfig = {
-                            from: SENDER_CREDENTIALS_1.user,
-                            to: contact.email,
-                            attachments: contact.attachments,
-                            subject: 'REPLACE THIS WITH YOUR DESIRED SUBJECT',
-                            text: 'REPLACE THIS WITH YOUR DESIRED EMAIL CONTENT',
-                            html: '<h1>REPLACE THIS WITH YOUR DESIRED EMAIL CONTENT</h1>'
-                        };
-                        return [4 /*yield*/, transport_1.sendMail(mailConfig)];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        }); });
-    }
-    catch (error) {
-        console.error(error);
-    }
+    });
 }
 main();
