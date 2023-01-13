@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "nodemailer": "^6.9.0",
+    "typescript": "^4.9.4"
+  },
+  "name": "mailer-template",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {
+    "@types/node": "^18.11.18"
+  },
+  "scripts": {
+    "start": "tsc script.ts && node script.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "https://github.com/franco-pelua",
+  "license": "ISC",
+  "description": "Automate bulk mail sending with javascript"
+}
