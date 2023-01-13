@@ -40,15 +40,15 @@ function main() {
     // Contact list can be imported
     var contacts = [
         {
-            "name": "Yo",
-            "email": "erekkles@gmail.com",
-            "attachments": []
+            "name": "John Doe",
+            "email": "john_doe@gmail.com",
+            "attachments": [{ "filename": "helloworld.pdf", "path": "C:/Users/Yourself/Documents/helloworld.pdf" }]
         }
     ];
     try {
         var SENDER_CREDENTIALS_1 = {
-            user: "franco_pelua@outlook.com",
-            password: "Nadielasabe123abc"
+            user: "yourself@gmail.com",
+            password: "p4ssw0rd@abc"
         };
         var transport_1 = nodemailer.createTransport({
             // Uses 'pool' attribute: The same connection is used to send up to 100 mails before being disposed.
